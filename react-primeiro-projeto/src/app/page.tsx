@@ -1,8 +1,10 @@
 const Page = () => {
   return (
-    <div className="w-screen h-screen">
+    <div className="container mx-auto">
 
-      <div className="">Algum texto qualquer</div>
+      <div className="flex justify-center items-center">
+        
+      </div>
 
     </div>
   )
