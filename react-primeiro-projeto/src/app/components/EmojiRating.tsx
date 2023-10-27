@@ -9,12 +9,12 @@ export const EmojiRating = ({ rate }: Props) => {
 
     const rateInt = Math.floor(rate);
 
-    const stars = ''.repeat(rateInt)
+    const stars = '😀'.repeat(rateInt) + '😀'.repeat(5 - rateInt);
 
     return (
         <div className="flex items-center text-6xl">
             <div className="bg-gray-700 rounded">{rate.toFixed(1)}</div>
-            <div className=" ml-3">{stars}</div>
+            <div className="ml-3">{stars}</div>
         </div>
-    )
+    );
 }
