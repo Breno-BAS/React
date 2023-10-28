@@ -1,9 +1,13 @@
-import { EmojiRating } from "./components/EmojiRating";
+import { students } from "./data/students";
 
 const Page = () => {
+
+  const list = students?.map(student => <li>{student.id}</li>)
+
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center text-white">
-      <EmojiRating rate ={2} />
+      
+        {list}
     </div>
   );
 }
