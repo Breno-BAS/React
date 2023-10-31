@@ -1,12 +1,13 @@
-import { StudentTable } from "./components/StundentTable";
-import { students } from "./data/students";
+"use client"
 
 const Page = () => {
 
+  const handleButtonClick = () => {
+    alert ('Funcionou novamente')
+  }
   return (
-    <div className="container mx-auto">
-      <h1 className="text-5xl mb-5">Lista de Estudantes</h1>
-      <StudentTable apprentice={students} />
+    <div className="w-screen h-screen flex justify-center items-center">
+      <button onClick={handleButtonClick} className="p-3 bg-blue-700 text-white rounded-md">Clique aqui</button>
     </div>
   );
 }
