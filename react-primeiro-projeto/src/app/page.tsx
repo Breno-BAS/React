@@ -2,19 +2,35 @@
 
 import { useState } from "react";
 import { TodoItem } from "./types/TodoItem";
+import { Input } from "postcss";
 
 
 const Page = () => {
   const [itemInput, setItemInput] = useState('');
   const [list, setList] = useState<TodoItem[]>([
-    {label: 'Fazer dever de casa', checked: false },
+    {label: 'Fazer dever de casa', checked: true },
     {label: 'Comprar o bolo', checked: false }
   ]);
 
   const handleAddButton = () => {
+    if(itemInput.trim() === '') return;
+
     setList([...list, { label: itemInput, checked: false}]);
     setItemInput('')
   }
+
+  const deleteItem = (index: number) => {
+    setList(
+      list.filter((item, key) => key !== index));
+  }
+
+  const toggleItem = (index: number) => {
+    let newList = [...list];
+    newList[index].checked = !newList[index].checked;
+
+    setList(newList);
+  }
+  
 
  return (
   <div className="w-screen h-screen flex flex-col items-center text-2xl">
@@ -33,8 +49,10 @@ const Page = () => {
     <p className="my-4">{list.length}Itens na lista</p>
 
     <ul className="w-full max-w-lg list-disc pl-5">
-      {list.map(item => (
-        <li>{ item.label }<button className="hover:underline"> [ deletar ]</button></li>
+      {list.map((item, index) => (
+        <li key={index}>
+          <input onClick={() => toggleItem(index)} type="checkbox" checked= {item.checked} className="w-6 h-6 mr-3" />
+          { item.label } - <button onClick={() => deleteItem (index)} className="hover:underline"> [ deletar ]</button></li>
       ))}
 
     </ul>
