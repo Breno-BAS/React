@@ -1,15 +1,24 @@
 "use client"
 
-import { useState } from "react";
-import { Square } from "./components/Square";
+import { useReducer, useState } from "react";
+import { Item } from "./types/item";
+import { listReducer } from "./reducers/listReducer";
+
 
 const Page = () => {
-  const [show, setShow] = useState(false);
+  const [list, dispatch] = useReducer(listReducer, []);
 
+  const handleAddClick = () => {
+    dispatch ({
+      type: 'add',
+      payload: {
+        text: 'Novo item'
+      }
+    });
+  }
   return(
     <div className="">
-      <button onClick={() => setShow(!show)}>Mostrar/Ocultar</button>
-      {show && <Square />}
+      <button onClick={handleAddClick}>Adicionar</button>
     </div>     
   );
 }
